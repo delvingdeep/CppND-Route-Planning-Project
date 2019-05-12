@@ -42,3 +42,13 @@ RouteModel::Node* RouteModel::Node::FindNeighbor (std::vector<int> node_indices)
     return closet_node;
 
 }
+
+void RouteModel::Node::FindNeighbors () {
+    for (auto &road : parent_model->node_to_road[this->index]) {
+        RouteModel::Node* road_neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
+
+        if (road_neighbor != nullptr) {
+            this->neighbors.emplace_back(road_neighbor);
+        }
+    }
+}
