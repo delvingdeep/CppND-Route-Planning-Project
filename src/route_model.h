@@ -18,7 +18,7 @@ class RouteModel : public Model {
         bool visited = false;
         std::vector<Node *> neighbors;
 
-        float Distance (Node other) const {
+        float distance (Node other) const {
           return std::sqrt(std::pow((x - other.x), 2) + std::pow((y - other.y), 2));
         }
 
@@ -29,6 +29,8 @@ class RouteModel : public Model {
         // Add private Node variables and methods here.
         int index;
         RouteModel * parent_model = nullptr;
+
+        Node* FindNeighbor (std::vector<int> node_indices);
     };
     
     // Add public RouteModel variables and methods here.
