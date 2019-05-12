@@ -35,9 +35,13 @@ class RouteModel : public Model {
     RouteModel(const std::vector<std::byte> &xml);  
     std::vector<Node> path; // This variable will eventually store the path that is found by the A* search.
     std::vector<Node> &SNodes() { return m_Nodes; }
+    std::unordered_map <int, std::vector<const Model::Road*>> GetNodeToRoadMap() { return node_to_road; }
 
   private:
     // Add private RouteModel variables and methods here.
     std::vector<Node> m_Nodes;
+    std::unordered_map <int, std::vector<const Model::Road*>> node_to_road;
+
+    void CreateNodeToRoadHashmap();
 
 };
