@@ -40,6 +40,7 @@ class RouteModel : public Model {
     std::vector<Node> path; // This variable will eventually store the path that is found by the A* search.
     std::vector<Node> &SNodes() { return m_Nodes; }
     std::unordered_map <int, std::vector<const Model::Road*>> GetNodeToRoadMap() { return node_to_road; }
+    Node& FindClosestNode(float x, float y);
 
   private:
     // Add private RouteModel variables and methods here.
