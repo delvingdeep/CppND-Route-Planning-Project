@@ -51,3 +51,16 @@ RouteModel::Node RoutePlanner::*NextNode() {
     open_list.erase(open_list.begin());
     return lowest_fnode;
 }
+
+void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
+    current_node->FindNeighbors()
+
+    for (auto neighbor : current_node->neighbors) {
+        neighbor->parent = current_node;
+        neighbor->g_value = current_node->g_value + current_node->distance(neighbor);
+        neighbor->h_value = CalculateHValue(neighbor);
+
+        open_list.push_back(neighbor);
+        neighbor->visted = true;
+    }
+}
